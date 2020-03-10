@@ -11,6 +11,8 @@ const My = () =>import( 'components/My')
 const CommunityNews = () =>import( 'components/CommunityNews')
 const CommunityAdd = () =>import('components/CommunityAdd')
 const MyHelp = () =>import('components/MyHelp')
+const MyImfo = () =>import('components/MyImfo')
+const MyRel = () =>import('components/MyRel')
 
 Vue.use(VueRouter)
 
@@ -54,6 +56,14 @@ const router = new VueRouter({
         {
           path:'help',
           component:MyHelp
+        },
+        {
+          path:'imfo',
+          component:MyImfo
+        },
+        {
+          path:'rel',
+          component:MyRel
         }
       ]
     }

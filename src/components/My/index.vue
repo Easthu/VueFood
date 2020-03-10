@@ -2,7 +2,7 @@
     <div class="my" >
         <div class="first" v-if='toggle'>
             <span class="header">我的</span>
-            <div class="name">
+            <div class="name" @click="imfo">
                 <img src="../../../public/f9.jpg" alt="">
                 <div class="imfo">
                     <div class="lv3">
@@ -14,7 +14,7 @@
                 <span class="iconfont">&#xe615;</span>
             </div>
             <ul>
-                <li>
+                <li @click="rel">
                     <span class="iconfont">&#xe628;</span>
                     <p>我的发布</p>
                     <span class="iconfont fin">&#xe615;</span>
@@ -162,6 +162,14 @@ export default {
         ...mapMutations(['changeToggle']),
         help(){
             this.$router.push('/my/help')
+            this.changeToggle(0)
+        },
+        imfo(){
+            this.$router.push('/my/imfo')
+            this.changeToggle(0)
+        },
+        rel(){
+            this.$router.push('/my/rel')
             this.changeToggle(0)
         }
     }
