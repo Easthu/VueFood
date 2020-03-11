@@ -1,13 +1,11 @@
 <template>
     <div class="CommunityList" v-if="toggle">
-    <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
         <div class="ul">
-        <div class="li" v-for="(item,index) in list" :key="index" @click="jump(index)">
-            <img :src="item.img" alt />
-            <p>{{item.foodName}}</p>
+          <div class="li" v-for="(item,index) in list" :key="index" @click="jump(index)">
+              <img :src="item.img" alt />
+              <p>{{item.foodName}}</p>
+          </div>
         </div>
-        </div>
-    </van-list>
     </div>
 </template>
 <style lang="less" scoped>
@@ -61,44 +59,23 @@
 <script>
 import { mapGetters, mapMutations, mapState } from "vuex";
 import { getData } from "../../api/api";
-// import { List } from 'vant'
 export default {
     data() {
         return {
-            unlist: [],
-            loading: false,
-            finished: false
+           
         };
     },
     computed: {
         ...mapState(["list", "listIndex", "toggle"])
     },
     methods: {
-        ...mapMutations(["changeIndex", "changeToggle"]),
+        ...mapMutations(["changeIndex", "changeToggle",'addList']),
         jump(index) {
             this.$router.push("/community/news");
             this.changeIndex(index);
             this.changeToggle(0);
         },
-    ...mapMutations(["addList"]),
-    onLoad() {
-        // 异步更新数据
-        // setTimeout 仅做示例，真实场景中一般为 ajax 请求
-        setTimeout(() => {
-            for (let i = 0; i < 10; i++) {
-            this.unlist.push(this.unlist.length + 1);
-            }
-
-            // 加载状态结束
-            this.loading = false;
-
-            // 数据全部加载完成
-            if (this.unlist.length >= 40) {
-            this.finished = true;
-            }
-        }, 1000);
-    }
-  },
+    },
   created() {
     getData().then(res => {
       //   console.log(res)
