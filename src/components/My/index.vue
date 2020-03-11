@@ -107,6 +107,7 @@
                 color: #ff6806;
                 font-size: 0.16rem;
                 text-align: center;
+                line-height: 0.34rem;
             }
         }
         p{
